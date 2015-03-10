@@ -7,8 +7,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+  		<div class="container-fluid">
+    	<!-- Brand and toggle get grouped for better mobile display -->
+   			<div class="navbar-header">
+      			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        			<span class="sr-only">Toggle navigation</span>
+       				<span class="icon-bar"></span>
+     				<span class="icon-bar"></span>
+        			<span class="icon-bar"></span>
+      			</button>
+      			<%= link_to 'R-T-R', root_path, :class => 'navbar-brand' %> 
+  			</div>
+    		<ul class="nav nav-tabs">
+  				<li role="presentation" class="active"><%= link_to 'Recipe of the Week', '#' %></li>
+  				<li role="presentation" class="dropdown">
+    				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Archive <span class="caret"></span>
+    				</a>
+    				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Appetizers</a></li>
+    					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Main Courses</a></li>
+    					<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Desserts</a></li>
+    				</ul>
+  				<li role="presentation"><%= link_to 'How RTR Works', '#' %></li>
+  				<li role="presentation"><%= link_to 'Submit a Recipe', recipes_path %></li>
+  				<button type="button" class="btn btn-default navbar-btn pull-right"><%= link_to 'Sign In', new_user_session_path %></button>
+  				<button type="button" class="btn btn-default navbar-btn pull-right"><%= link_to 'Sign Up', new_user_registration_path %></button>
+			</ul>
+
+		</div>
+	</nav>
+	
+
+
+<% if notice.present? %>
+   	<p class="alert alert-info"><%= notice %></p>
+<% end %>
+<% if alert.present? %>
+	<p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
 
 <%= yield %>
-
 </body>
 </html>
