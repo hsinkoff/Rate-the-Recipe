@@ -2,8 +2,12 @@ Rtr::Application.routes.draw do
 
   devise_for :users
   root 'static_pages#index'
+  get 'about', :to => 'static_pages#about'
+  get 'archive', :to => 'static_pages#archive'
 
-  resources :recipes
+  resources :recipes do
+    resources :suggestions, :only => :create
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

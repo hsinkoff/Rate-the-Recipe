@@ -1,0 +1,16 @@
+<div class="text-center">
+<h1> Archived Recipe</h1>
+<br/>
+<div class="text-center background-box">
+  <h3><%= @recipes.name %></h3>
+  <br/>
+  <h4><%= "Ingredients" %></h4>
+  <h5><%= @recipes.ingredients %></h5>
+  <br/>
+  <h4><%= "Directions" %></h4>
+  <h5><%= @recipes.directions %></h5>
+</div>
+
+<% @recipes.suggestions.each do |comment| %>
+  <%= comment.suggestion %>
+<%end%>

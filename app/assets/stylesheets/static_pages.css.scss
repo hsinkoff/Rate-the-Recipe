@@ -1,3 +1,13 @@
-// Place all the styles related to the static_pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    height: 400px;
+    width: 60%;
+    margin: 0px auto;
+}
+
+.carousel {
+  box-shadow: 0px 3px 8px #2a2a2a;
+}
+
+.slide {
+	background-color: black;
+}

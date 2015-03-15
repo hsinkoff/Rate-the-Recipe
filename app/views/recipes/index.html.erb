@@ -1,0 +1,24 @@
+<div class="text-center">
+<h1> Recipe of the week page</h1>
+<button type="button" class="btn btn-default navbar-btn"><%= link_to 'Submit Update', edit_recipe_path(@recipes) %></button>
+</div>
+<div class="text-center background-box">
+  <h3><%= @recipes.name %></h3>
+  <br/>
+  <h4><%= "Ingredients" %></h4>
+  <h5><%= @recipes.ingredients %></h5>
+  <br/>
+  <h4><%= "Directions" %></h4>
+  <h5><%= @recipes.directions %></h5>
+</div>
+<div class="text-center">
+  <%= simple_form_for @suggestion, :url => recipe_suggestions_path(@recipes) do |f| %>
+    <%= "Type your suggestion below and hit Submit Suggestion" %>
+    <br/>
+    <%= f.submit "Submit Suggestion", :class => "btn btn-default navbar-btn" %>
+    <%= f.input :suggestion %>
+  <% end %>
+</div>
+<% @recipes.suggestions.each do |comment| %>
+  <%= comment.suggestion%>
+<%end%>

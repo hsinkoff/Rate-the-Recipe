@@ -1,1 +1,39 @@
-<h1>New Recipe Site</h1>
+<div class="text-center">
+	<h2>Rate the Recipe</h2>
+	<h4>A Crowd Sourced Test Kitchen</h4>
+</div>
+<br/>
+<div id="carousel-example-generic" class="carousel slide">
+	<!--Indicators-->
+	<o1 class="carousel-indicators hidden-xs">
+		<li data-target="carousel-example-generic" data-slide-to="0" class="active"></li>
+		<li data-target="carousel-example-generic" data-slide-to="1"></li>
+		<li data-target="carousel-example-generic" data-slide-to="2"></li>
+	</o1>
+	<!--Wrapper for slides-->
+	<div class="carousel-inner">
+		<div class="item active">
+			<%= image_tag 'flowers.jpg', :class => 'img-responsive' %>
+		</div>
+		<div class="item">
+			<%= image_tag 'Koala.jpg', :class => 'img-responsive' %>
+		</div>
+		<div class="item">
+			<%= image_tag 'Lighthouse.jpg', :class => 'img-responsive' %>
+		</div>
+	</div>
+	<!--Controls-->
+	<a class="left carousel-control" href=
+	"#carousel-example-generic" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left">
+		</span>
+	</a>
+	<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right">
+		</span>
+	</a>
+</div>
+<div class="text-center">
+	<h3>Recipe of the Week: </h3>
+	<%=@recipes.name %>
+</div>
