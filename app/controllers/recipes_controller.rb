@@ -13,8 +13,14 @@ class RecipesController < ApplicationController
 		end
 	end
 
-	def index
-		@recipes = Recipe.order(:id).last
+	def index(t_id=1)
+		t = Time.now
+		if t.thursday? && !Recipe.exists?(t_id+1)
+			t_id = 1
+		elsif t.thursday?
+			t_id = t_id + 1
+		end
+		@recipes=Recipe.find(t_id)
 	end
 	
 	def edit
