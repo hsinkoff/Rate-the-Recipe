@@ -11,6 +11,15 @@
   <h5><%= @recipes.directions %></h5>
 </div>
 
+<div>
+  <%= simple_form_for @suggestion, :url => recipe_suggestions_path(@recipes) do |f| %>
+    <%= "Type your suggestion below and hit Submit Suggestion" %>
+    <br/>
+    <%= f.submit "Submit Suggestion", :class => "btn btn-default navbar-btn" %>
+    <%= f.input :suggestion %>
+  <% end %>
+</div>
 <% @recipes.suggestions.each do |comment| %>
-  <%= comment.suggestion %>
+  <%= comment.suggestion%>
+  <br/>
 <%end%>

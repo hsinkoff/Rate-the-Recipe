@@ -14,8 +14,7 @@ class RecipesController < ApplicationController
 	end
 
 	def index
-		@recipes = Recipe.order(:name).first
-		@suggestion=Suggestion.new
+		@recipes = Recipe.order(:id).last
 	end
 	
 	def edit
@@ -30,11 +29,12 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipes = Recipe.find(params[:id])
+		@suggestion=Suggestion.new
 	end
 
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(:name, :ingredients, :directions)
+		params.require(:recipe).permit(:name, :ingredients, :directions, :meal)
 	end
 end
