@@ -6,6 +6,13 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = Recipe.create(recipe_params)
+		#check syntax
+		last_recipe = Recipe.reorder(:date).last
+		if last_recipe == nil 
+			@recipe.date = Time.now
+		else
+			@recipe.date = last_recipe.date + 7.days
+		end
 		if @recipe.valid?
 			redirect_to root_path
 		else
@@ -14,13 +21,7 @@ class RecipesController < ApplicationController
 	end
 
 	def index(t_id=1)
-		t = Time.now
-		if t.thursday? && !Recipe.exists?(t_id+1)
-			t_id = 1
-		elsif t.thursday?
-			t_id = t_id + 1
-		end
-		@recipes=Recipe.find(t_id)
+		@recipes.where("date <= #{Time.now}").reorder(:date).last
 	end
 	
 	def edit
