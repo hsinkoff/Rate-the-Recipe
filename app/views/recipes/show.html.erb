@@ -1,25 +1,35 @@
-<div class="text-center">
-<h1> Archived Recipe</h1>
-<br/>
-<div class="text-center background-box">
-  <h3><%= @recipes.name %></h3>
-  <br/>
-  <h4><%= "Ingredients" %></h4>
-  <h5><%= @recipes.ingredients %></h5>
-  <br/>
-  <h4><%= "Directions" %></h4>
-  <h5><%= @recipes.directions %></h5>
-</div>
-
-<div>
-  <%= simple_form_for @suggestion, :url => recipe_suggestions_path(@recipes) do |f| %>
-    <%= "Type your suggestion below and hit Submit Suggestion" %>
+<div class="container-fluid">
+  <div class="text-center">
+    <h1> Archived Recipe</h1>
     <br/>
-    <%= f.submit "Submit Suggestion", :class => "btn btn-default navbar-btn" %>
-    <%= f.input :suggestion %>
-  <% end %>
+  </div>
+  <div class="col-lg-6">
+    <div class="text-center background-box"> 
+      <h3><%= @recipes.name %></h3>
+      <br/>
+      <h4><%= "Ingredients" %></h4>
+      <% @recipes.ingredients.split("\r\n").each do |ingred| %>
+        <h5><%= ingred %></h5>
+      <%end%>
+      <br/>
+      <h4><%= "Directions" %></h4>
+      <% @recipes.directions.split("\r\n").each do |name|
+           %>
+        <h5><%= name %></h5>
+      <% end%>
+    </div>
+  </div>
+
+  <div class="col-lg-5 text-center">
+    <%= simple_form_for @suggestion, :url => recipe_suggestions_path(@recipes) do |f| %>
+      <%= "Type your suggestion below and hit Submit Suggestion" %>
+      <br/>
+      <%= f.submit "Submit Suggestion", :class => "btn btn-default navbar-btn" %>
+      <%= f.input :suggestion %>
+    <% end %>
+    <% @recipes.suggestions.each do |comment| %>
+      <%= comment.suggestion%>
+      <br/>
+    <%end%>
+  </div>
 </div>
-<% @recipes.suggestions.each do |comment| %>
-  <%= comment.suggestion%>
-  <br/>
-<%end%>
