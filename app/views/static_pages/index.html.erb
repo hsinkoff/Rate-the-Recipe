@@ -2,7 +2,6 @@
 	<h2>Rate the Recipe</h2>
 	<h4>A Crowd Sourced Test Kitchen</h4>
 </div>
-<br/>
 <div id="carousel-example-generic" class="carousel slide">
 	<!--Indicators-->
 	<o1 class="carousel-indicators hidden-xs">
@@ -36,6 +35,6 @@
 <div class="text-center">
 	<% if @recipes != nil%>
 		<h3>Recipe of the Week: </h3>
-		<%=@recipes.name %>
+		<h3><%=@recipes.name %></h3>
 	<% end %>
 </div>

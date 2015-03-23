@@ -18,3 +18,7 @@
     <%= "There is no recipe this week.  Try back next week." %>
   <% end %>
 </div>
+<div>
+  <h1> The next recipe will be posted on:</h1>
+  <h2><%=Recipe.where('publish_date > ?', @recipes.publish_date).first.publish_date.strftime("%B %d, %Y.")%></h2>
+</div>
