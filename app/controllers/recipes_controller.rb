@@ -6,13 +6,7 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = Recipe.create(recipe_params)
-		#check syntax
-		last_recipe = Recipe.reorder(:date).last
-		if last_recipe == nil 
-			@recipe.date = Time.now
-		else
-			@recipe.date = last_recipe.date + 7.days
-		end
+		@recipe.recipe_date
 		if @recipe.valid?
 			redirect_to root_path
 		else
@@ -20,8 +14,8 @@ class RecipesController < ApplicationController
 		end
 	end
 
-	def index(t_id=1)
-		@recipes.where("date <= #{Time.now}").reorder(:date).last
+	def index
+		@recipes = Recipe.where('publish_date <= ?', Time.now).reorder(:publish_date).last
 	end
 	
 	def edit
@@ -36,7 +30,7 @@ class RecipesController < ApplicationController
 
 	def show
 		@recipes = Recipe.find(params[:id])
-		@suggestion=Suggestion.new
+		@suggestion  = Suggestion.new
 	end
 
 	private
