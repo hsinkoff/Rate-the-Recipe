@@ -5,8 +5,14 @@ class RecipesController < ApplicationController
 	end
 
 	def create
+		last_recipe = Recipe.reorder(:publish_date).last
+		if last_recipe.blank?
+			next_date = Time.now
+		else
+			next_date = last_recipe.publish_date + 7.days
+		end
 		@recipe = Recipe.create(recipe_params)
-		@recipe.recipe_date
+		@recipe.update_attributes(:publish_date=>next_date)
 		if @recipe.valid?
 			redirect_to root_path
 		else
