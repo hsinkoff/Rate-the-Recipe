@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+	before_action :authenticate_user!, except: :index
 
 	def new
 		@recipe = Recipe.new
@@ -14,6 +15,7 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.create(recipe_params)
 		@recipe.update_attributes(:publish_date=>next_date)
 		if @recipe.valid?
+			current_user.update_attributes(usage: 1 + current_user.usage)
 			redirect_to root_path
 		else
 			render :new, :status => :unprocessable_entity
@@ -31,17 +33,14 @@ class RecipesController < ApplicationController
 	def update
 		@recipes = Recipe.find(params[:id])
 		@recipes.update_attributes(recipe_params)
+		current_user.update_attributes(usage: current_user.usage + 1)
 		redirect_to recipes_path
-	end
-
-	def show
-		@recipes = Recipe.find(params[:id])
-		@suggestion  = Suggestion.new
 	end
 
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(:name, :ingredients, :directions, :meal)
+		p=params.require(:recipe).permit(:name, :ingredients, :directions, :meal, :user_id)
+		p.user_id = current_user.id
 	end
 end

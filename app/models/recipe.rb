@@ -1,5 +1,5 @@
 class Recipe < ActiveRecord::Base
-	belongs_to :user
+	has_one :user
 	has_many :suggestions
 	
 	validates :name, length: {minimum:2, maximum:25}

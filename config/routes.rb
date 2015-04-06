@@ -4,6 +4,7 @@ Rtr::Application.routes.draw do
   root 'static_pages#index'
   get 'about', :to => 'static_pages#about'
   get 'archive', :to => 'static_pages#archive'
+  resource :profile, :only => :show
 
   resources :recipes do
     resources :suggestions, :only => :create

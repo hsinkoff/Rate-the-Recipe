@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
 	def index
-		@recipes=Recipe.order(:name).first
+		@recipes=Recipe.where('publish_date <= ?', Time.now).reorder(:publish_date).last
 	end
 
 	def about
@@ -9,4 +9,5 @@ class StaticPagesController < ApplicationController
 	def archive
 		@recipes=Recipe.order(:name)
 	end
+
 end

@@ -1,0 +1,38 @@
+<% if current_user.premium %>
+	<div  class="text-center">
+		<h1>My Profile</h1>
+		<br/><br/>
+		<h3>My Recipes</h3>
+	</div>
+
+<% else %>
+	<div class="text-center">
+		<h1>ADMINISTRATORS ONLY</h1>
+		<br/>
+		<h3>Users</h3>
+		<br/>
+		<% User.all.each do |user| %>
+			<div class="col-lg-4">
+				<h4>
+					<%= user.email %>
+				</h4>
+			</div>
+			<h5>
+				<div class="text-red col-lg-4"><%="Delete User"%></div> 
+				<div class="col-lg-4"><%= "Send User Password Link" %></div>	
+			</h5>
+			<hr/>
+		<% end %>
+		<br/>
+		<h3>Recipes</h3>
+		<br/>
+		<% Recipe.all.each do |recipe| %>
+			<div class="col-lg-6">
+				<h4><%= recipe.name %></h4>
+			</div>
+			<div class="text-red col-lg-6">
+				<h5><%="Delete Recipe"%></h5>
+				<br/>
+			</div>
+		<% end %>
+<% end %>
