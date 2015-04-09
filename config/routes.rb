@@ -5,10 +5,9 @@ Rtr::Application.routes.draw do
   get 'about', :to => 'static_pages#about'
   get 'archive', :to => 'static_pages#archive'
   resource :profile, :only => :show
-
-  resources :recipes do
-    resources :suggestions, :only => :create
-  end
+  
+  resources :recipes
+  resources :suggestions, :only => [:show, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

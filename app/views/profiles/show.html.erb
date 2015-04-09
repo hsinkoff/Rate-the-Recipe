@@ -9,7 +9,7 @@
 	<div class="text-center">
 		<h1>ADMINISTRATORS ONLY</h1>
 		<br/>
-		<h3>Users</h3>
+		<h2>Users</h2>
 		<br/>
 		<% User.all.each do |user| %>
 			<div class="col-lg-4">
@@ -18,21 +18,30 @@
 				</h4>
 			</div>
 			<h5>
-				<div class="text-red col-lg-4"><%="Delete User"%></div> 
-				<div class="col-lg-4"><%= "Send User Password Link" %></div>	
+				<div class="text-red col-lg-4"><%=link_to 'Delete User', '#', :method => :delete, :confirm => "You sure?" %></div> 
+				<div class="col-lg-4"><%= link_to 'Send User Password Link', '#' %></div>	
 			</h5>
+			<div class="clear"></div>
 			<hr/>
 		<% end %>
 		<br/>
-		<h3>Recipes</h3>
+		<h2>Recipes</h2>
 		<br/>
 		<% Recipe.all.each do |recipe| %>
 			<div class="col-lg-6">
 				<h4><%= recipe.name %></h4>
 			</div>
-			<div class="text-red col-lg-6">
-				<h5><%="Delete Recipe"%></h5>
+			<div class="col-lg-6">
+				<h5><%= link_to 'Delete Recipe', recipe_path(recipe), :method => :delete, :confirm => "Are you sure?" %></h5>
 				<br/>
 			</div>
+			<% recipe.suggestions.all.each do |suggestion| %>
+				<h5><%= suggestion.suggestion %></h5>
+				<h5><%= link_to 'Delete Suggestion', suggestion_path(suggestion), :method => :delete, :confirm => "Are you sure?" %></h5>
+				<br/>
+			<% end %>
+			<div class="clear"/>
+			<hr/>
 		<% end %>
+	</div>
 <% end %>

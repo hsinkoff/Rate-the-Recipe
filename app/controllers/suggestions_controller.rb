@@ -8,6 +8,12 @@ class SuggestionsController < ApplicationController
 		redirect_to recipe_path(@recipes)
 	end
 
+	def destroy
+		@suggestion=Suggestion.find(params[:id])
+		@suggestion.delete
+		redirect_to profile_path
+	end
+
 	private
 
 	def suggestion_params
