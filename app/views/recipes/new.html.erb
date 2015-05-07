@@ -6,10 +6,10 @@
 <br/><br/>
 <div class="box col-lg-6 col-lg-offset-3">
 <%= simple_form_for @recipe do |f| %>
-	<%= f.input :name %>
-	<%= f.input :ingredients %>
-	<%= f.input :directions %>
-	<%= f.input :meal, collection: ["appetizers", "main course", "desserts"] %>
-	<%= f.button :submit %>
+  <%= f.input :name %>
+  <%= f.input :ingredients %>
+  <%= f.input :directions %>
+  <%= f.input :meal, collection: ["appetizers", "main course", "desserts"] %>
+  <%= f.button :submit %>
 <% end %>
 </div>

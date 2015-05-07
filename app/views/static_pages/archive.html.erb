@@ -1,21 +1,21 @@
 <div class="text-center">
-	<br/>
-	<a id="Appetizers"></a>
-	<h1>Archived Recipes</h1>
-	<br/>
-	<h3>Appetizers</h3>
-	<% @recipes.where(:meal => "appetizers").each do |recipe| %>
-		<h4><%=link_to recipe.name, recipe_path(recipe.id) %></h4>
-	<% end %>
-	<br/><br/>
-	<h3><a id="Main-Courses"></a>Main Courses</h3>
-	<% @recipes.where(:meal => "main course").each do |recipe| %>
-		<h4><%=link_to recipe.name, recipe_path(recipe.id) %></h4>
-	<% end %>
-	<br/><br/>
-	<h3><a id="Desserts"></a>Desserts</h3>
-	<% @recipes.where(:meal => "desserts").each do |recipe| %>
-		<h4><%=link_to recipe.name, recipe_path(recipe.id) %></h4>
-	<% end %>
-	<br/><br/>
+  <br/>
+  <a id="Appetizers"></a>
+  <h1>Archived Recipes</h1>
+  <br/>
+  <h3>Appetizers</h3>
+  <% @recipes.where(:meal => "appetizers").each do |recipe| %>
+    <h4><%=link_to recipe.name, recipe_path(recipe.id) %></h4>
+  <% end %>
+  <br/><br/>
+  <h3><a id="Main-Courses"></a>Main Courses</h3>
+  <% @recipes.where(:meal => "main course").each do |recipe| %>
+    <h4><%=link_to recipe.name, recipe_path(recipe.id) %></h4>
+  <% end %>
+  <br/><br/>
+  <h3><a id="Desserts"></a>Desserts</h3>
+  <% @recipes.where(:meal => "desserts").each do |recipe| %>
+    <h4><%=link_to recipe.name, recipe_path(recipe.id) %></h4>
+  <% end %>
+  <br/><br/>
 </div>

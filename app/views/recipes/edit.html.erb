@@ -1,12 +1,12 @@
 <h1 class="text-center">Edit the Recipe</h1>
 <h3 class="text-center">Make changes to the recipe below.</h3>
-	<h3 class="text-center text-red">Remember these changes will be permanent!</h3>
+  <h3 class="text-center text-red">Remember these changes will be permanent!</h3>
 <br/>
 <div class="background-box">
-	<%= simple_form_for @recipes do |f| %>
-		<%= f.input :name %>
-		<%= f.input :ingredients %>
-		<%= f.input :directions %>
-		<%= f.button :submit %>
-	<%end%>
+  <%= simple_form_for @recipes do |f| %>
+    <%= f.input :name %>
+    <%= f.input :ingredients %>
+    <%= f.input :directions %>
+    <%= f.button :submit %>
+  <%end%>
 </div>
