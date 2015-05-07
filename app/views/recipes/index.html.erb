@@ -28,7 +28,11 @@
 </div>
 <div class="col-lg-4">
   <br/>
-  <h1> The next recipe will be posted on:</h1>
-  <h2><%=Recipe.where('publish_date > ?', @recipes.publish_date).first.publish_date.strftime("%B %d, %Y.")%></h2>
+  <% if @recipes != Recipe.last %>
+    <h1> The next recipe will be posted on:</h1>
+    <h2><%=Recipe.where('publish_date > ?', @recipes.publish_date).first.publish_date.strftime("%B %d, %Y.")%></h2>
+  <% else %>
+    <h1 class = "text-red"> There are no more recipes in our cookbook.  Please add recipes to our cookbook so that we can have a recipe of the week next week.</h1>
+  <% end %>
 </div>
 </div>
