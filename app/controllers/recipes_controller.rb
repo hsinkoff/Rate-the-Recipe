@@ -5,6 +5,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
   end
 
+  def show
+    @recipes = Recipe.find(params[:id])
+    @suggestion = Suggestion.new
+  end
+
   def create
     last_recipe = Recipe.reorder(:publish_date).last
     if last_recipe.blank?
