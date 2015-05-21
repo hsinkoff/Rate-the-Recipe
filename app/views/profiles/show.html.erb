@@ -1,8 +1,18 @@
 <% if current_user.premium %>
   <div  class="text-center">
-    <h1>My Profile</h1>
+    <h1>My Recipe Box</h1>
     <br/><br/>
-    <h3>My Recipes</h3>
+    <h3>Recipes</h3>
+    <br/>
+    <% Recipe.all.each do |recipe| %>
+      <% if recipe.user_id = current_user.id %>
+        <h4>
+          <%= link_to recipe.name, recipe_path(recipe) %>
+          <br/>
+          <br/>
+        </h4>
+      <% end %>
+    <% end %>
   </div>
 
 <% else %>

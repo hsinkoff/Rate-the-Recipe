@@ -46,7 +46,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    p=params.require(:recipe).permit(:name, :ingredients, :directions, :meal, :user_id)
-    p.user_id = current_user.id
+    params.require(:recipe).permit(:name, :ingredients, :directions, :meal, :user_id)
   end
 end
